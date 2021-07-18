@@ -6,16 +6,22 @@ class User{
         this.body = body;
     }
     login(){
-        const body = this.body;
-        const { id, pwd } = UserStorage.getUserInfo(body.id);
+        const client = this.body;
+        const { id, pwd } = UserStorage.getUserInfo(client.id);
         
         if(id){
-            if(id === this.body.id && pwd === body.pwd){
+            if(id === this.client.id && pwd === client.pwd){
                 return {success: true};
             }
             return {success: false, msg: "wrong password"};
         }
         return {success: false, msg: "does not exist ID"};
+    }
+    register() {
+        const client = this.body;
+        
+        const response = UserStorage.save(client);
+        return response;
     }
 }
 
