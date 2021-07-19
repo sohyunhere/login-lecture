@@ -9,7 +9,8 @@ const id = document.querySelector("#id"),
 registerBtn.addEventListener("click", register);
 
 function register() {
-    if (id.value) return alert("write ID");
+    if (!id.value)
+        return alert("write ID");
     if (pwd.value !== confirmPwd.value) {
         return alert("incorrect password");
     }
