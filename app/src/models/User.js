@@ -17,11 +17,15 @@ class User{
         }
         return {success: false, msg: "does not exist ID"};
     }
-    register() {
+    async register() {
         const client = this.body;
+        try{
+            const response = await UserStorage.save(client);
+            return response;
+        }catch(err){
+            return {success: false, msg: err};
+        }
         
-        const response = UserStorage.save(client);
-        return response;
     }
 }
 
