@@ -34,7 +34,7 @@ function register() {
             if (res.success) {
                 location.href = "/";
             } else {
-                alert(res.msg);
+                alert("create!");
             }
         })
         .catch((err) => {
